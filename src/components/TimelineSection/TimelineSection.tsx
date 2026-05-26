@@ -17,7 +17,7 @@ const timeline: TimelineItem[] = [
   {
     time: "15:30",
     title: "Церемония",
-    desc: "Трогательная часть и да-да",
+    desc: "Трогательная часть",
     media: <img src="/ring.svg" className="w-14 h-14" />,
   },
   {
