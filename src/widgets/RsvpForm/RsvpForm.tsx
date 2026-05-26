@@ -314,7 +314,7 @@ export default function RsvpForm() {
           {/* NOTES */}
           <textarea
             className="w-full min-h-[100px] px-4 py-3 border border-[#E8D5D0] rounded-[10px] bg-white focus:ring-2 focus:ring-[#B8956B] text-black"
-            placeholder="Свои пожелания по алкоголю..."
+            placeholder="Свои пожелания по напиткам..."
             value={formData.notes}
             onChange={(e) =>
               setFormData((p) => ({ ...p, notes: e.target.value }))
