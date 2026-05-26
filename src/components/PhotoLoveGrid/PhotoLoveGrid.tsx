@@ -12,7 +12,7 @@ export const PhotoLoveGrid = () => {
         viewport={{ once: true, amount: 0.4 }}
       >
         <div className="border-2 border-white p-2 bg-[#fff] max-w-[60%] -rotate-15">
-          <img src="/first.png" className=" object-cover" />
+          <img src="/first.png" className=" object-cover" loading="lazy" />
         </div>
 
         {/* HEARTS */}
@@ -21,11 +21,13 @@ export const PhotoLoveGrid = () => {
             src="/heart/serd1-Photoroom1.png"
             className="-rotate-70 pb-6 w-20"
             width={60}
+            loading="lazy"
           />
           <img
             src="/heart/serd1-Photoroom1.png"
             className="rotate-10 pr-4 w-20"
             width={60}
+            loading="lazy"
           />
         </div>
       </motion.div>
@@ -48,6 +50,7 @@ export const PhotoLoveGrid = () => {
           className="rotate-5 pt-3"
           src="/heart/serd2-Photoroom1.png"
           width={80}
+          loading="lazy"
         />
       </motion.div>
 
@@ -65,16 +68,18 @@ export const PhotoLoveGrid = () => {
             className="rotate-5 pl-7 w-20"
             src="/heart/serd4-Photoroom1.png"
             width={60}
+            loading="lazy"
           />
           <img
             src="/heart/serd5-Photoroom1.png"
             className="-rotate-15 pb-5 w-20"
             width={60}
+            loading="lazy"
           />
         </div>
 
         <div className="border-2 border-white p-2 bg-[#fff] rotate-15 max-w-[60%]">
-          <img src="/second.png" className=" object-cover" />
+          <img src="/second.png" className=" object-cover" loading="lazy" />
         </div>
       </motion.div>
     </section>

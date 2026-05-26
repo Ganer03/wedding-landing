@@ -56,7 +56,11 @@ export const LocationGallery = () => {
           >
             {/* IMAGE */}
             <div className="border-2 border-[#790013] p-2 bg-white">
-              <img src={item.img} className="w-full h-[180px] object-cover" />
+              <img
+                src={item.img}
+                className="w-full h-[180px] object-cover"
+                loading="lazy"
+              />
             </div>
 
             {/* TITLE */}

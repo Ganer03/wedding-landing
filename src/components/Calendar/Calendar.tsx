@@ -22,7 +22,12 @@ export const Calendar = () => {
         transition={{ duration: 0.6, delay: 0.1 }}
         viewport={{ once: true, amount: 0.4 }}
       >
-        <img className="w-full object-cover" src="/calendar.png" width={80} />
+        <img
+          className="w-full object-cover"
+          src="/calendar.png"
+          width={80}
+          loading="lazy"
+        />
       </motion.div>
     </section>
   );
