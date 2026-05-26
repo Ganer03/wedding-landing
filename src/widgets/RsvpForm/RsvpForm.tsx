@@ -109,7 +109,7 @@ export default function RsvpForm() {
     return newErrors;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const validationErrors = validate();
@@ -132,23 +132,30 @@ export default function RsvpForm() {
       drinks,
     };
 
-    console.log(payload);
+    const API_URL = import.meta.env.VITE_API_URL;
 
-    // пример API отправки
+    try {
+      const response = await fetch(`${API_URL}/api/rsvps`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          data: payload,
+        }),
+      });
 
-    /*
-    await fetch("/api/rsvp", {
-      method:"POST",
-      headers:{
-        "Content-Type":"application/json"
-      },
-      body:JSON.stringify(payload)
-    }) */
-    setErrors({});
-    setSuccess(true);
+      if (!response.ok) {
+        throw new Error("Ошибка API");
+      }
 
-    localStorage.setItem(RSVP_KEY, String(Date.now()));
-    setAlreadySubmitted(true);
+      setErrors({});
+      setSuccess(true);
+      localStorage.setItem(RSVP_KEY, String(Date.now()));
+      setAlreadySubmitted(true);
+    } catch (err) {
+      console.error(err);
+    }
 
     setTimeout(() => {
       setSuccess(false);
