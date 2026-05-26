@@ -81,7 +81,6 @@ export const FitstScreenConvertOpen = ({ stage }: { stage: Stage }) => {
                         height={150}
                         className="pt-4"
                         style={{ maxWidth: "110px" }}
-                        loading="lazy"
                       />
 
                       <img
@@ -89,7 +88,6 @@ export const FitstScreenConvertOpen = ({ stage }: { stage: Stage }) => {
                         width={150}
                         height={150}
                         style={{ maxWidth: "110px" }}
-                        loading="lazy"
                       />
                       <div className="absolute bottom-0 bg-[#790013] max-w-[230px] w-full py-2 px-4 rounded-md">
                         <div className="title text-3xl text-white  text-center">

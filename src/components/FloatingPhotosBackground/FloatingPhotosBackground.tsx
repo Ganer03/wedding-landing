@@ -17,6 +17,8 @@ const photos = [
   "/heart/heartnew/serred13-Photoroom.svg",
   "/heart/heartnew/serred14-Photoroom.svg",
 ];
+const animatedIndexes = new Set([0, 3, 7, 10]);
+
 const positions = [
   // TOP
   { top: "1%", left: "-8%", rotate: -20, width: 115 },
@@ -42,6 +44,12 @@ const positions = [
   { bottom: "2%", left: "-15%", rotate: -18, width: 130 },
   { top: "35%", left: "40%", rotate: -5, width: 100 },
 ];
+
+const getY = (i: number, state: boolean) => {
+  if (state) return -120;
+  if (animatedIndexes.has(i)) return [0, -8, 0];
+  return 0;
+};
 
 export const FloatingPhotosBackground = ({ state }: { state: boolean }) => {
   return (
@@ -83,7 +91,7 @@ export const FloatingPhotosBackground = ({ state }: { state: boolean }) => {
               scale: state ? 0.8 : 1,
               rotate: pos.rotate,
 
-              y: state ? -120 : [0, -8, 0],
+              y: getY(i, state),
             }}
             transition={{
               opacity: {
@@ -101,15 +109,11 @@ export const FloatingPhotosBackground = ({ state }: { state: boolean }) => {
                 delay: i * 0.08,
               },
 
-              y: state
-                ? {
-                    duration: 0.7,
-                  }
-                : {
-                    repeat: Infinity,
-                    duration: 5 + i * 0.4,
-                    ease: "easeInOut",
-                  },
+              y: {
+                repeat: state ? 0 : animatedIndexes.has(i) ? Infinity : 0,
+                duration: 5 + i * 0.4,
+                ease: "easeInOut",
+              },
             }}
           />
         );
