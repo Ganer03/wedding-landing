@@ -11,7 +11,11 @@ type FormData = {
 type DrinksState = {
   wine: number;
   champagne: number;
-  spirits: number;
+  martini: number;
+  viski: number;
+  vodka: number;
+  coniak: number;
+  pivo: number;
 };
 const RSVP_KEY = "rsvp_sent_at";
 const ONE_HOUR = 1000 * 60 * 60;
@@ -44,7 +48,11 @@ export default function RsvpForm() {
   const [drinks, setDrinks] = useState<DrinksState>({
     wine: 0,
     champagne: 0,
-    spirits: 0,
+    martini: 0,
+    viski: 0,
+    vodka: 0,
+    coniak: 0,
+    pivo: 0,
   });
 
   const toggleDrink = (key: keyof DrinksState) => {
