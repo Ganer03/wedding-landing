@@ -3,12 +3,12 @@ import { motion } from "framer-motion";
 const locations = [
   {
     title: "ЗАГС",
-    img: "/zags.jpg",
+    img: "/zags.png",
     link: "https://yandex.ru/maps/-/CPDVAEp1",
   },
   {
     title: "БАНКЕТ",
-    img: "/besedka.jpg",
+    img: "/besedka.png",
     link: "https://yandex.ru/profile/-/CPDV4H2f",
   },
 ];

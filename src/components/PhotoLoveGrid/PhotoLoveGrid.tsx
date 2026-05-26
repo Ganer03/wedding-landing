@@ -12,7 +12,7 @@ export const PhotoLoveGrid = () => {
         viewport={{ once: true, amount: 0.4 }}
       >
         <div className="border-2 border-white p-2 bg-[#fff] max-w-[60%] -rotate-15">
-          <img src="/first.jpg" className=" object-cover" />
+          <img src="/first.png" className=" object-cover" />
         </div>
 
         {/* HEARTS */}
@@ -74,7 +74,7 @@ export const PhotoLoveGrid = () => {
         </div>
 
         <div className="border-2 border-white p-2 bg-[#fff] rotate-15 max-w-[60%]">
-          <img src="/second.jpg" className=" object-cover" />
+          <img src="/second.png" className=" object-cover" />
         </div>
       </motion.div>
     </section>
