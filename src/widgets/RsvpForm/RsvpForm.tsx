@@ -124,6 +124,7 @@ export default function RsvpForm() {
         });
       });
 
+      setLoading(false);
       return;
     }
 
