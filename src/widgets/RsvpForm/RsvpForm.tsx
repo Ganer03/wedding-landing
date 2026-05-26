@@ -44,6 +44,8 @@ export default function RsvpForm() {
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [apiError, setApiError] = useState<string | null>(null);
 
   const [drinks, setDrinks] = useState<DrinksState>({
     wine: 0,
@@ -111,6 +113,8 @@ export default function RsvpForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (loading) return; // защита от дубля
+    setLoading(true);
 
     const validationErrors = validate();
 
@@ -142,18 +146,27 @@ export default function RsvpForm() {
         },
         body: JSON.stringify(payload),
       });
-      console.log(response);
 
       if (!response.ok) {
         throw new Error("Ошибка API");
       }
 
       setErrors({});
+      setApiError(null);
       setSuccess(true);
       localStorage.setItem(RSVP_KEY, String(Date.now()));
       setAlreadySubmitted(true);
     } catch (err) {
       console.error(err);
+      let message = "Ошибка отправки заявки";
+
+      if (err instanceof Error) {
+        message = "Ошибка: " + err.message;
+      }
+
+      setApiError(message);
+    } finally {
+      setLoading(false);
     }
 
     setTimeout(() => {
@@ -341,13 +354,19 @@ export default function RsvpForm() {
               setFormData((p) => ({ ...p, notes: e.target.value }))
             }
           />
+          {apiError && (
+            <div className="bg-white text-[#790013] p-3 rounded-md">
+              {apiError}
+            </div>
+          )}
 
           {/* SUBMIT */}
           <button
+            disabled={loading}
             type="submit"
             className="w-full max-w-[350px] mx-auto py-4 rounded-full bg-white uppercase tracking-widest sm-title text-lg font-bold shadow-[0_8px_25px_rgba(184,149,107,0.3)] hover:-translate-y-0.5 transition text-[#790013]"
           >
-            Отправить
+            {loading ? "Отправка..." : "Отправить"}
           </button>
         </form>
       </section>
