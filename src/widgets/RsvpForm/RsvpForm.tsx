@@ -58,7 +58,7 @@ export default function RsvpForm() {
   });
 
   const toggleDrink = (key: keyof DrinksState) => {
-    setDrinks((p) => ({ ...p, [key]: p[key] ? 0 : 2 }));
+    setDrinks((p) => ({ ...p, [key]: p[key] ? 0 : 1 }));
   };
 
   const updateDrink = (key: keyof DrinksState, delta: number) => {
@@ -309,37 +309,6 @@ export default function RsvpForm() {
                   >
                     {d.label}
                   </h4>
-
-                  {drinks[d.key as keyof DrinksState] > 0 && (
-                    <div
-                      className="flex items-center justify-center gap-3 mt-4 pt-3 border-t border-dashed border-white"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <button
-                        type="button"
-                        className="w-8 h-8 rounded-full border border-[#D4B896] text-white"
-                        onClick={() =>
-                          updateDrink(d.key as keyof DrinksState, -1)
-                        }
-                      >
-                        -
-                      </button>
-
-                      <span className=" text-lg text-white">
-                        {drinks[d.key as keyof DrinksState]}
-                      </span>
-
-                      <button
-                        type="button"
-                        className="w-8 h-8 rounded-full border border-[#D4B896] text-white"
-                        onClick={() =>
-                          updateDrink(d.key as keyof DrinksState, 1)
-                        }
-                      >
-                        +
-                      </button>
-                    </div>
-                  )}
                 </div>
               ))}
             </div>
