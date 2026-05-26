@@ -61,10 +61,6 @@ export default function RsvpForm() {
     setDrinks((p) => ({ ...p, [key]: p[key] ? 0 : 1 }));
   };
 
-  const updateDrink = (key: keyof DrinksState, delta: number) => {
-    setDrinks((p) => ({ ...p, [key]: Math.max(0, p[key] + delta) }));
-  };
-
   const formatPhone = (value: string) => {
     const numbers = value.replace(/\D/g, "");
 
