@@ -135,15 +135,14 @@ export default function RsvpForm() {
     const API_URL = import.meta.env.VITE_API_URL;
 
     try {
-      const response = await fetch(`${API_URL}/api/rsvps`, {
+      const response = await fetch(`${API_URL}/items/rsvps`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          data: payload,
-        }),
+        body: JSON.stringify(payload),
       });
+      console.log(response);
 
       if (!response.ok) {
         throw new Error("Ошибка API");
